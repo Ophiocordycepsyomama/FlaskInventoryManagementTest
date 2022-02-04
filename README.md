@@ -10,6 +10,8 @@ Download - Run
     Get it using the following command:
 
         $ git clone git://github.com/Ophiocordycepsyomama/FlaskInventoryManagementTest.git
+        
+        $ cd testflask/
     
         $ python3 run.py
 ## Creating a product:

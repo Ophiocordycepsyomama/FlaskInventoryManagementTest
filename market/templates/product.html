@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title%}Product Page{% endblock%}
+
+{% block content %}
+    <h1 style="margin: 10px;">Product Page</h1>
+    <div class="container">
+        <form method="POST" class="product-register" style="color:white">
+            {{ form.hidden_tag() }}
+            <h1 class="h3 mb-3 font-weight-normal"style="margin: auto;text-align: center;">
+                Please Create your Product
+            </h1>
+            <br>
+            {{ form.product_id.label() }}
+            {{ form.product_id(class="form-control", placeholder="Product Name", id="f1") }}
+
+            {{ form.qnty.label() }}
+            {{ form.qnty(class="form-control", placeholder="Quantity", id="f2") }}
+
+            
+
+            <br>
+
+            {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+            {{ form.submit1(class="btn btn-lg btn-block btn-primary") }}
+
+        </form>
+    </div>
+    
+    <table class="table table-hover table-dark" id="tableroot"  style="align-content: center;margin-top: 10px;">
+        <thead>
+            <tr>
+                <!-- Your Columns HERE -->
+                <th scope="col">Name</th>
+                <th scope="col">Qnty</th>
+                <th scope="col">Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Your rows inside the table HERE: -->
+            {% for item in items %}
+                <tr>
+                    <td>{{ item.product_id }}</td>
+                    <td>{{ item.qnty }}</td>
+                    <td>
+                        <button class="btn btn-outline btn-success"onclick="sel(this.id)" id="{{loop.index}}">Select</button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <script>
+        function sel(id){
+            let a = parseInt(id);
+            document.getElementById("f1").value = document.getElementById('tableroot').rows[a].cells[0].innerHTML;
+            document.getElementById("f2").value = document.getElementById('tableroot').rows[a].cells[1].innerHTML;
+        }
+    </script>
+    
+    {% endblock %}
+
+    

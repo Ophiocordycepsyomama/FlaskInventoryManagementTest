@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title%}Location Page{% endblock%}
+
+{% block content %}
+    <h1 style="margin: 10px;">Location Page</h1>
+    <div class="container" >
+        <form method="POST" class="Location-register" style="color:white">
+            {{ form.hidden_tag() }}
+            <h1 class="h3 mb-3 font-weight-normal" style="text-align: center;">
+                Please Create your Location
+            </h1>
+            <br>
+            {{ form.location_id.label() }}
+            {{ form.location_id(class="form-control", placeholder="Location Name", id="f1") }}
+            <br>
+            {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+            {{ form.submit1(class="btn btn-lg btn-block btn-primary") }}
+
+        </form>
+    </div>
+    
+    <table class="table table-hover table-dark" style="align-content: center;margin-top: 10px;" id="tableroot">
+        <thead>
+            <tr>
+                <!-- Your Columns HERE -->
+                <th scope="col">Name</th>
+                <th scope="col">Storage</th>
+                <th scope="col">Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Your rows inside the table HERE: -->
+            {% for item in items %}
+                <tr>
+                    <td>{{ item.location_id }}</td>
+                    <td>{{ item.storage }}</td>
+                    <td>
+                        <button class="btn btn-outline btn-success"onclick="sel(this.id)" id="{{loop.index}}">Select</button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <script>
+        function sel(id){
+            let a = parseInt(id);
+            document.getElementById("f1").value = document.getElementById('tableroot').rows[a].cells[0].innerHTML;
+        }
+    </script>
+    
+    {% endblock %}
+
+    

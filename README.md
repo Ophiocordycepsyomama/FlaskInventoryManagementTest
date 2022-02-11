@@ -11,7 +11,11 @@ Download - Run
 
         $ git clone git://github.com/Ophiocordycepsyomama/FlaskInventoryManagementTest.git
         
-        $ cd testflask/
+        $ python3 -m venv venv
+        
+        $ . venv/bin/activate
+        
+        $ pip install -r requirements.txt
     
         $ python3 run.py
 ## Creating a product:

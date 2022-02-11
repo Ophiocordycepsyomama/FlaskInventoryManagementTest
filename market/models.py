@@ -2,13 +2,13 @@ from market import db
 
 class Product(db.Model):
     product_id = db.Column(db.String(length=30), primary_key=True)
-    qnty = db.Column(db.Integer(), nullable=False, default=1)
+
     def __repr__(self):
-        return f'{self.product_id}|{self.qnty}'
+        return f'{self.product_id}'
 
 class Location(db.Model):
     location_id = db.Column(db.String(length=30), primary_key=True)
-    storage = db.Column(db.Text(length=1000), primary_key=True)
+    
     def __repr__(self):
         return f'{self.location_id}'
 

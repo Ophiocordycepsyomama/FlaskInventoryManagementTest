@@ -1,25 +1,31 @@
 {% extends 'base.html' %}
-{% block title%}Location Page{% endblock%}
+
+{% block title%}Locations{% endblock%}
 
 {% block content %}
-    <h1 style="margin: 10px;">Location Page</h1>
-    <div class="container" >
-        <form method="POST" class="Location-register" style="color:white">
+<div class="divcenter" style="width: 90%;margin-top: 2%;border: 2px white;  ">
+        
+        
+        
+    <div class="row" style="margin: 5%;margin-top: 3%;" >
+    <div class="col" style="border: 2px solid green;border-radius: 10px;background-color: white; ">
+        <h1 class="header" style="margin-left: 30%;">Location</h1>
+        <form method="POST" class="Location-register" >
             {{ form.hidden_tag() }}
-            <h1 class="h3 mb-3 font-weight-normal" style="text-align: center;">
-                Please Create your Location
-            </h1>
             <br>
             {{ form.location_id.label() }}
             {{ form.location_id(class="form-control", placeholder="Location Name", id="f1") }}
             <br>
-            {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
-            {{ form.submit1(class="btn btn-lg btn-block btn-primary") }}
-
+            {{ form.create(class="btn btn-lg btn-block btn-primary") }}
+            {{ form.delete(class="btn btn-lg btn-block btn-primary") }}
+            <br>
         </form>
     </div>
+    <div class="col-1"></div>
+    <div class="col" style="border: 2px solid green;border-radius: 10px;background-color: white; ">
     
-    <table class="table table-hover table-dark" style="align-content: center;margin-top: 10px;" id="tableroot">
+    <h1 class="header" style="margin-left: 35%;">Table</h1>
+    <table class="table table-hover table-striped" style="align-content: center;margin-top: 10px;" id="tableroot">
         <thead>
             <tr>
                 <!-- Your Columns HERE -->
@@ -30,17 +36,21 @@
         </thead>
         <tbody>
             <!-- Your rows inside the table HERE: -->
-            {% for item in items %}
+            {% for item in report %}
                 <tr>
-                    <td>{{ item.location_id }}</td>
-                    <td>{{ item.storage }}</td>
+                    <td>{{ item[0] }}</td>
+                    <td>{{ item[1][:-2] }}</td>
                     <td>
                         <button class="btn btn-outline btn-success"onclick="sel(this.id)" id="{{loop.index}}">Select</button>
                     </td>
                 </tr>
             {% endfor %}
+            
         </tbody>
     </table>
+</div>
+</div>
+</div>
     <script>
         function sel(id){
             let a = parseInt(id);
